@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connexion – Trinidad Betting</title>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0D1117;
+      --bg-card: #161B22;
+      --text-light: #F2F2F2;
+      --primary: #FFC845;
+      --secondary: #1E8E3E;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      color: var(--text-light);
+    }
+
+    body { background: var(--bg-dark); }
+
+    header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background: #121721;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+    header img   { height: 48px; }
+    header h1    { font-size: 1.6rem; font-weight: 600; }
+
+    .btn {
+      cursor: pointer;
+      padding: 0.6rem 1.2rem;
+      margin-left: 0.5rem;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      background: var(--primary);
+      color: #000;
+      transition: transform 0.15s;
+    }
+    .btn:hover { transform: scale(1.05); }
+
+    /* LOGIN FORM */
+    .login-container {
+      max-width: 420px;
+      margin: 5rem auto;
+      background: var(--bg-card);
+      padding: 2.5rem 2.5rem 3rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+    }
+    .login-container h2 { margin-bottom: 1.5rem; text-align: center; }
+    .login-container label {
+      display: block;
+      font-size: 0.9rem;
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+    }
+    .login-container input {
+      width: 100%;
+      padding: 0.65rem 0.8rem;
+      margin-bottom: 1.2rem;
+      border: 1px solid #444C56;
+      border-radius: 6px;
+      background: #0D1117;
+      color: var(--text-light);
+    }
+    .login-container .submit-btn {
+      width: 100%;
+      font-size: 1rem;
+    }
+
+    .login-container .forgot {
+      text-align: right;
+      margin-top: 1rem;
+    }
+    .login-container .forgot a {
+      color: var(--primary);
+      font-size: 0.85rem;
+      text-decoration: none;
+    }
+    .login-container .forgot a:hover { text-decoration: underline; }
+
+    .login-container .register {
+      text-align: center;
+      margin-top: 1.2rem;
+      font-size: 0.85rem;
+    }
+    .login-container .register a {
+      color: var(--secondary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .login-container .register a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="img/logo.png" alt="Logo Trinidad" />
+    <h1>Trinidad Betting</h1>
+    <div>
+      <a href="index.html" class="btn">Accueil</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="login-container">
+      <h2>Connexion</h2>
+      <form action="#" method="post">
+        <label for="email">Adresse e‑mail</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Mot de passe</label>
+        <input type="password" id="password" name="password" required>
+
+        <!-- Bouton d'envoi -->
+        <button type="submit" class="btn submit-btn">Se connecter</button>
+
+        <!-- Lien mot de passe oublié en dessous -->
+        <div class="forgot">
+          <a href="#">Mot de passe oublié&nbsp;?</a>
+        </div>
+
+        <!-- Invitation à s'inscrire -->
+        <div class="register">
+          Vous n'avez pas de compte&nbsp;? <a href="signup.html">Inscrivez‑vous</a>
+        </div>
+      </form>
+    </div>
+  </main>
+</body>
+</html>

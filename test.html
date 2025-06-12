@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trinidad Betting</title>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0D1117;
+      --bg-card: #161B22;
+      --text-light: #F2F2F2;
+      --primary: #FFC845;
+      --secondary: #1E8E3E;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      color: var(--text-light);
+    }
+
+    body { background: var(--bg-dark); }
+
+    header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background: #121721;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+    header img   { height: 48px; }
+    header h1    { font-size: 1.6rem; font-weight: 600; }
+
+    .btn {
+      cursor: pointer;
+      padding: 0.6rem 1.2rem;
+      margin-left: 0.5rem;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      background: var(--primary);
+      color: #000;
+      transition: transform 0.15s;
+    }
+    .btn:hover { transform: scale(1.05); }
+
+    /* HERO SECTION */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start; /* rapproché */
+      gap: 1rem;                 /* espace réduit */
+      padding: 3rem 2rem;
+    }
+    .hero-left {
+      flex: 1 1 320px;
+      max-width: 560px;
+    }
+    .hero-left p {
+      font-size: 1.4rem;
+      line-height: 1.4;
+      font-weight: 600;
+      max-width: 34rem;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      margin-top: calc(2rem + 1cm); /* +1 cm pour décaler vers le bas */
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .arrow {
+      background: transparent;
+      border: none;
+      font-size: 2rem;
+      cursor: pointer;
+      color: var(--primary);
+      transition: transform 0.15s;
+    }
+    .arrow:hover { transform: scale(1.15); }
+
+    .testimonial {
+      flex: 1 1 0;
+      background: var(--bg-card);
+      border-left: 4px solid var(--primary);
+      padding: 1rem 1.2rem;
+      border-radius: 8px;
+      min-height: 120px;
+    }
+    .quote  { font-size: 1rem; margin-bottom: 0.6rem; }
+    .author { font-size: 0.9rem; font-weight: 600; text-align: right; }
+
+    /* RIGHT CARD */
+    .hero-right {
+      flex: 0 0 520px;   /* plus large qu'avant */
+      max-width: 520px;  /* plus large qu'avant */
+      margin-left: auto; /* poussée complètement à droite */
+    }
+
+    .card {
+      background: var(--bg-card);
+      border-radius: 12px;
+      padding: 2.5rem 2rem;      /* un peu plus généreux */
+      box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+      width: 100%;
+    }
+    .card h2 { font-size: 1.4rem; margin-bottom: 1rem; }
+
+    /* Market buttons */
+    .markets {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .market-btn {
+      background: #2D333B;
+      border: 1px solid #444C56;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .market-btn.active,
+    .market-btn:hover { background: var(--secondary); }
+
+    .caracs { margin: 0.5rem 0 1.5rem 0; }
+    .caracs h3 { font-size: 1rem; margin-bottom: 0.4rem; }
+    .caracs ul { list-style: none; }
+    .caracs li { margin: 0.25rem 0; font-size: 0.9rem; }
+
+    /* Gain simulator */
+    .simulator { margin-bottom: 1.5rem; }
+    .simulator h3 { font-size: 1rem; margin-bottom: 0.4rem; }
+    .simulator label { font-size: 0.9rem; display: block; margin-bottom: 0.3rem; }
+    .simulator input[type=range] {
+      width: 100%;
+      appearance: none;
+      height: 6px;
+      background: #444C56;
+      border-radius: 3px;
+      outline: none;
+    }
+    .simulator input[type=range]::-webkit-slider-thumb {
+      appearance: none;
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: var(--primary);
+      cursor: pointer;
+      border: none;
+    }
+    .simulator ul { list-style: none; margin-top: 0.5rem; }
+    .simulator li { font-size: 0.9rem; margin: 0.2rem 0; }
+
+    .cart {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .cart .price { font-size: 1.1rem; font-weight: 600; }
+    .cart-btn {
+      background: var(--primary);
+      color: #000;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero { flex-direction: column; align-items: center; }
+      .hero-left p { text-align: center; }
+      .hero-right {
+        max-width: 100%;
+        margin-left: 0; /* alignement mobile */
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="img/logo.png" alt="Logo Trinidad" />
+    <h1>Trinidad Betting</h1>
+    <div>
+      <button class="btn" onclick="location.href='login.html'">Se connecter</button>
+      <button class="btn" onclick="location.href='signup.html'">S’inscrire</button>
+    </div>
+  </header>
+
+  <main class="hero">
+    <!-- Left catchy phrase + testimonials -->
+    <section class="hero-left">
+      <p>Plusieurs centaines de milliers d’euros gagnés chaque année : transformez votre passion pour le sport en investissement rentable.</p>
+
+      <div class="testimonials">
+        <button class="arrow" id="prevT">&#8249;</button>
+        <div class="testimonial" id="testimonialBox">
+          <p class="quote">« J’ai triplé ma bankroll en six mois grâce aux défis ! »</p>
+          <p class="author">- Antoine B.</p>
+        </div>
+        <button class="arrow" id="nextT">&#8250;</button>
+      </div>
+    </section>
+
+    <!-- Right card with offers -->
+    <section class="hero-right">
+      <div class="card">
+        <h2>Nos offres</h2>
+        <!-- Market selection -->
+        <div class="markets">
+          <button class="market-btn active" data-market="defis">Défis</button>
+          <button class="market-btn" data-market="cote">Côte Boostée</button>
+          <button class="market-btn" data-market="nba">NBA</button>
+          <button class="market-btn" data-market="moneyline">Moneyline</button>
+          <button class="market-btn" data-market="autres">Autres marchés</button>
+        </div>
+
+        <!-- Characteristics -->
+        <div class="caracs">
+          <h3>Caractéristiques</h3>
+          <ul>
+            <li id="roi">ROI: +25%</li>
+            <li id="mise">Mise moyenne: 50 €</li>
+            <li id="nb">Nombre de paris moyen: 30/mois</li>
+            <li id="cout">Coût abonnement: 49 €/mois</li>
+          </ul>
+        </div>
+
+        <!-- Gain simulator -->
+        <div class="simulator">
+          <h3>Simulateur de gain</h3>
+          <label for="bankroll">Bankroll (€): <span id="bankrollValue">1000</span></label>
+          <input type="range" id="bankroll" min="100" max="20000" step="100" value="1000">
+          <ul>
+            <li id="gainMois">Gain estimé par mois : 250 €</li>
+            <li id="gainAn">Gain estimé par an : 3 000 €</li>
+          </ul>
+        </div>
+
+        <!-- Cart -->
+        <div class="cart">
+          <span class="price" id="price">49 €</span>
+          <button class="cart-btn" id="addCart">Ajouter au panier 🛒</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    /* OFFERS DATA */
+    const offers = {
+      defis: { roi: '+25%', mise: '50 €', nb: '30/mois', cout: '49 €/mois', price: '49 €' },
+      cote: { roi: '+40%', mise: '20 €', nb: '10/mois', cout: '29 €/mois', price: '29 €' },
+      nba:  { roi: '+32%', mise: '30 €', nb: '25/mois', cout: '39 €/mois', price: '39 €' },
+      moneyline: { roi: '+18%', mise: '100 €', nb: '15/mois', cout: '59 €/mois', price: '59 €' },
+      autres: { roi: '+22%', mise: '40 €', nb: '20/mois', cout: '35 €/mois', price: '35 €' }
+    };
+
+    const caracIds = { roi: 'roi', mise: 'mise', nb: 'nb', cout: 'cout', price: 'price' };
+    const bankrollInput = document.getElementById('bankroll');
+    const bankrollValueSpan = document.getElementById('bankrollValue');
+    const gainMoisEl = document.getElementById('gainMois');
+    const gainAnEl   = document.getElementById('gainAn');
+
+    let currentROI = 25; // default for defis
+
+    function formatEuro(num) {
+      return num.toLocaleString('fr-FR', { style: 'currency', currency: 'EUR', minimumFractionDigits: 0 });
+    }
+
+    function updateGains() {
+      const bankroll = parseInt(bankrollInput.value, 10);
+      bankrollValueSpan.textContent = bankroll;
+      const monthlyGain = bankroll * currentROI / 100;
+      const annualGain = monthlyGain * 12;
+      gainMoisEl.textContent = `Gain estimé par mois : ${formatEuro(monthlyGain)}`;
+      gainAnEl.textContent   = `Gain estimé par an : ${formatEuro(annualGain)}`;
+    }
+
+    bankrollInput.addEventListener('input', updateGains);
+
+    document.querySelectorAll('.market-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        // toggle active class
+        document.querySelectorAll('.market-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const key = btn.dataset.market;
+        const data = offers[key];
+        document.getElementById(caracIds.roi).textContent = `ROI: ${data.roi}`;
+        document.getElementById(caracIds.mise).textContent = `Mise moyenne: ${data.mise}`;
+        document.getElementById(caracIds.nb).textContent = `Nombre de paris moyen: ${data.nb}`;
+        document.getElementById(caracIds.cout).textContent = `Coût abonnement: ${data.cout}`;
+        document.getElementById(caracIds.price).textContent = data.price;
+
+        currentROI = parseFloat(data.roi); // Extract numeric ROI
+        updateGains();
+      });
+    });
+
+    // Initial gain calculation
+    updateGains();
+
+    // Simple cart feedback
+    document.getElementById('addCart').addEventListener('click', () => {
+      alert('Offre ajoutée au panier !');
+    });
+
+    /* TESTIMONIALS DATA */
+    const testimonials = [
+      { quote: '«\u00A0J\u2019ai triplé ma bankroll en six mois grâce aux défis\u00A0»', author: '- Antoine B.' },
+      { quote: '«\u00A0Les analyses NBA sont incroyablement précises : +35% sur ma saison\u00A0»', author: '- Laura M.' },
+      { quote: '«\u00A0La côte boostée a payé mes vacances d\u2019été !\u00A0»', author: '- Marc L.' },
+      { quote: '«\u00A0Service au top et community manager très réactif. Je recommande !\u00A0»', author: '- Sofia G.' }
+    ];
+    let currentTestimonial = 0;
+    const testimonialBox = document.getElementById('testimonialBox');
+
+    function renderTestimonial(idx) {
+      testimonialBox.querySelector('.quote').textContent = testimonials[idx].quote;
+      testimonialBox.querySelector('.author').textContent = testimonials[idx].author;
+    }
+
+    document.getElementById('prevT').addEventListener('click', () => {
+      currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+      renderTestimonial(currentTestimonial);
+    });
+    document.getElementById('nextT').addEventListener('click', () => {
+      currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+      renderTestimonial(currentTestimonial);
+    });
+  </script>
+</body>
+</html>

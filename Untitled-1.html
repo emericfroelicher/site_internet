@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trinidad Betting</title>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0D1117;
+      --bg-card: #161B22;
+      --text-light: #F2F2F2;
+      --primary: #FFC845;
+      --secondary: #1E8E3E;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      color: var(--text-light);
+    }
+
+    body { background: var(--bg-dark); }
+
+    header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background: #121721;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    header img { height: 48px; }
+    header h1 { font-size: 1.6rem; font-weight: 600; }
+    .btn {
+      cursor: pointer;
+      padding: 0.6rem 1.2rem;
+      margin-left: 0.5rem;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      background: var(--primary);
+      color: #000;
+      transition: transform 0.15s;
+    }
+    .btn:hover { transform: scale(1.05); }
+
+    /* HERO SECTION */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 3rem 2rem;
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .hero-left {
+      flex: 1 1 380px;
+      max-width: 520px;
+    }
+    .hero-left p {
+      font-size: 1.4rem;
+      line-height: 1.4;
+      font-weight: 600;
+      max-width: 24rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      background: var(--bg-card);
+      border: 1px solid var(--primary);
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      max-width: 24rem;
+    }
+    .testimonial-content { flex: 1; }
+    .testimonial-content p { font-size: 0.95rem; line-height: 1.4; margin-bottom: 0.4rem; }
+    .testimonial-content span { font-size: 0.85rem; color: var(--primary); font-weight: 600; }
+    .nav-arrow {
+      background: none;
+      border: none;
+      color: var(--primary);
+      font-size: 1.4rem;
+      cursor: pointer;
+      padding: 0 0.3rem;
+      transition: transform 0.15s;
+    }
+    .nav-arrow:hover { transform: scale(1.2); }
+
+    .hero-right {
+      flex: 1 1 420px;
+      max-width: 500px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border-radius: 12px;
+      padding: 2rem 1.5rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    }
+    .card h2 { font-size: 1.4rem; margin-bottom: 1rem; }
+
+    /* Market buttons */
+    .markets {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .market-btn {
+      background: #2D333B;
+      border: 1px solid #444C56;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      user-select: none;
+    }
+    .market-btn.active,
+    .market-btn:hover { background: var(--secondary); }
+
+    .caracs { margin: 0.5rem 0 1.5rem 0; }
+    .caracs h3 { font-size: 1rem; margin-bottom: 0.4rem; }
+    .caracs ul { list-style: none; }
+    .caracs li { margin: 0.25rem 0; font-size: 0.9rem; }
+
+    /* Gain simulator */
+    .simulator { margin-bottom: 1.5rem; }
+    .simulator h3 { font-size: 1rem; margin-bottom: 0.4rem; }
+    .simulator label { font-size: 0.9rem; display: block; margin-bottom: 0.3rem; }
+    .simulator input[type=range] {
+      width: 100%;
+      appearance: none;
+      height: 6px;
+      background: #444C56;
+      border-radius: 3px;
+      outline: none;
+    }
+    .simulator input[type=range]::-webkit-slider-thumb {
+      appearance: none;
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: var(--primary);
+      cursor: pointer;
+      border: none;
+    }
+    .simulator ul { list-style: none; margin-top: 0.5rem; }
+    .simulator li { font-size: 0.9rem; margin: 0.2rem 0; }
+
+    .cart {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .cart .price { font-size: 1.1rem; font-weight: 600; }
+    .cart-btn {
+      background: var(--primary);
+      color: #000;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero { flex-direction: column; align-items: center; }
+      .hero-left p { text-align: center; }
+      .testimonials { margin: 0 auto; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="img/logo.png" alt="Logo Trinidad" />
+    <h1>Trinidad Betting</h1>
+    <div>
+      <button class="btn" onclick="location.href='login.html'">Se connecter</button>
+      <button class="btn" onclick="location.href='signup.html'">S’inscrire</button>
+    </div>
+  </header>
+
+  <main class="hero">
+    <!-- Left catchy phrase and testimonials -->
+    <section class="hero-left">
+      <p>Plusieurs centaines de milliers d’euros gagnés chaque année : transformez votre passion pour le sport en investissement rentable.</p>
+
+      <!-- Testimonials carousel -->
+      <div class="testimonials">
+        <button class="nav-arrow" id="prevT">‹</button>
+        <div class="testimonial-content">
+          <p id="testimonialText">« J’ai doublé ma bankroll en 6 mois grâce aux tips Trinidad ! »</p>
+          <span id="testimonialAuthor">Lucas D.</span>
+        </div>
+        <button class="nav-arrow" id="nextT">›</button>
+      </div>
+    </section>
+
+    <!-- Right card with offers -->
+    <section class="hero-right">
+      <div class="card">
+        <h2>Nos offres</h2>
+        <!-- Market selection -->
+        <div class="markets">
+          <button class="market-btn active" data-market="defis">Défis</button>
+          <button class="market-btn" data-market="cote">Côte Boostée</button>
+          <button class="market-btn" data-market="nba">NBA</button>
+          <button class="market-btn" data-market="moneyline">Moneyline</button>
+          <button class="market-btn" data-market="autres">Autres marchés</button>
+        </div>
+
+        <!-- Characteristics -->
+        <div class="caracs">
+          <h3>Caractéristiques</h3>
+          <ul>
+            <li id="roi">ROI: +25%</li>
+            <li id="mise">Mise moyenne: 50 €</li>
+            <li id="nb">Nombre de paris moyen: 30/mois</li>
+            <li id="cout">Coût abonnement: 49 €/mois</li>
+          </ul>
+        </div>
+
+        <!-- Gain simulator -->
+        <div class="simulator">
+          <h3>Simulateur de gain</h3>
+          <label for="bankroll">Bankroll (€): <span id="bankrollValue">1000</span></label>
+          <input type="range" id="bankroll" min="100" max="20000" step="100" value="1000">
+          <ul>
+            <li id="gainMois">Gain estimé par mois : 250 €</li>
+            <li id="gainAn">Gain estimé par an : 3 000 €</li>
+          </ul>
+        </div>
+
+        <!-- Cart -->
+        <div class="cart">
+          <span class="price" id="price">49 €</span>
+          <button class="cart-btn" id="addCart">Ajouter au panier 🛒</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    /* ----- OFFERS LOGIC ----- */
+    const offers = {
+      defis: { roi: '+25%', mise: '50 €', nb: '30/mois', cout: '49 €/mo

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trinidad Betting</title>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0D1117;
+      --bg-card: #161B22;
+      --text-light: #F2F2F2;
+      --primary: #FFC845;
+      --secondary: #1E8E3E;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      color: var(--text-light);
+    }
+
+    body { background: var(--bg-dark); }
+
+    header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background: #121721;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+    header img   { height: 48px; }
+    header h1    { font-size: 1.6rem; font-weight: 600; }
+
+    .btn {
+      cursor: pointer;
+      padding: 0.6rem 1.2rem;
+      margin-left: 0.5rem;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      background: var(--primary);
+      color: #000;
+      transition: transform 0.15s;
+    }
+    .btn:hover { transform: scale(1.05); }
+
+    /* HERO SECTION */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 1rem;
+      padding: 3rem 2rem;
+    }
+
+    /* Reuse your existing CSS for layout, cards etc. */
+
+    /* Login form specific */
+    .login-container {
+      max-width: 420px;
+      margin: 4rem auto;
+      background: var(--bg-card);
+      padding: 2rem 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+    }
+    .login-container h2 { margin-bottom: 1.2rem; }
+    .login-container label { display: block; font-size: 0.9rem; margin-bottom: 0.25rem; }
+    .login-container input {
+      width: 100%;
+      padding: 0.6rem 0.8rem;
+      margin-bottom: 1rem;
+      border: 1px solid #444C56;
+      border-radius: 6px;
+      background: #0D1117;
+      color: var(--text-light);
+    }
+    .login-container .links {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+    }
+    .login-container .links a { color: var(--primary); text-decoration: none; }
+    .login-container .links a:hover { text-decoration: underline; }
+
+  </style>
+  <!-- React & ReactDOM -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <!-- React Router -->
+  <script crossorigin src="https://unpkg.com/react-router-dom@6/umd/react-router-dom.development.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/javascript">
+    const { BrowserRouter, Routes, Route, Link, useNavigate } = ReactRouterDOM;
+
+    /* Landing Component (hero + buttons) */
+    function Landing() {
+      const navigate = useNavigate();
+      return (
+        React.createElement('div', { className: 'hero' },
+          React.createElement('section', { className: 'hero-left' },
+            React.createElement('p', null,
+              'Plusieurs centaines de milliers d\u2019euros gagnés chaque année : transformez votre passion pour le sport en investissement rentable.'
+            ),
+            React.createElement('div', null,
+              React.createElement('button', { className: 'btn', onClick: () => navigate('/login') }, 'Se connecter'),
+              React.createElement('button', { className: 'btn', style: { marginLeft: '0.5rem' }, onClick: () => navigate('/signup') }, 'S\u2019inscrire')
+            )
+          ),
+          React.createElement('section', { className: 'hero-right' },
+            React.createElement('div', { className: 'card' },
+              React.createElement('h2', null, 'Nos offres'),
+              React.createElement('p', null, '... (gardez vos éléments existants ici) ...')
+            )
+          )
+        )
+      );
+    }
+
+    /* Login Component */
+    function Login() {
+      const navigate = useNavigate();
+      return (
+        React.createElement('div', { className: 'login-container' },
+          React.createElement('h2', null, 'Connexion'),
+          React.createElement('form', { onSubmit: e => { e.preventDefault(); alert('Authentification...'); } },
+            React.createElement('label', { htmlFor: 'email' }, 'Adresse e-mail'),
+            React.createElement('input', { id: 'email', type: 'email', required: true }),
+            React.createElement('label', { htmlFor: 'password' }, 'Mot de passe'),
+            React.createElement('input', { id: 'password', type: 'password', required: true }),
+            React.createElement('button', { className: 'btn', type: 'submit', style: { width: '100%' } }, 'Se connecter')
+          ),
+          React.createElement('div', { className: 'links' },
+            React.createElement(Link, { to: '#', onClick: e => e.preventDefault() }, 'Mot de passe oublié ?'),
+            React.createElement(Link, { to: '/signup' }, 'Pas encore de compte ? Inscrivez-vous')
+          )
+        )
+      );
+    }
+
+    /* Placeholder Signup Component */
+    function Signup() {
+      const navigate = useNavigate();
+      return React.createElement('div', { style: { textAlign: 'center', marginTop: '4rem' } },
+        React.createElement('h2', null, 'Inscription (à compléter)'),
+        React.createElement('button', { className: 'btn', onClick: () => navigate('/') }, 'Retour à l\u2019accueil')
+      );
+    }
+
+    /* App Component with Router */
+    function App() {
+      return (
+        React.createElement(BrowserRouter, null,
+          React.createElement(Routes, null,
+            React.createElement(Route, { path: '/', element: React.createElement(Landing) }),
+            React.createElement(Route, { path: '/login', element: React.createElement(Login) }),
+            React.createElement(Route, { path: '/signup', element: React.createElement(Signup) })
+          )
+        )
+      );
+    }
+
+    /* Render */
+    ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(App));
+  </script>
+</body>
+</html>
